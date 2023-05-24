@@ -35,7 +35,7 @@ Some code was borrowed from the following repositories. We thank the authors for
 | Feedback | 10.0 | 84.0 | 47.1 | 80.0 | 96.0 | 85.3 |
 
 
-### Detail Results on BBQ
+### Detailed Results on BBQ
 |                     | Original | Correct | Mistake | Feedback |
 | ------------------- | -------- | ------- | ------- | -------- |
 | Age                 | 68.0     | 68.0    | 72.0    | 96.0     |
@@ -52,7 +52,7 @@ Some code was borrowed from the following repositories. We thank the authors for
 | Avg                 | 76.55    | 72.00   | 79.82   | 85.27    |
 
 
-### Detail Results on BBH
+### Detailed Results on BBH
 |                                         | Original | Correct | Mistake | Feedback |
 | --------------------------------------- | -------- | ------- | ------- | -------- |
 | date_understanding                      | 48.0     | 48.0    | 46.0    | 46.0     |
