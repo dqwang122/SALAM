@@ -2,7 +2,7 @@
 This is the repository for the paper: *Learn from Mistakes through Interaction with Study Assistant* (SALAM).
 This project is still on process. We will update the code and data soon.
 
-![SALAM](figs/framework.pdf)
+![SALAM](figs/framework.jpg)
 
 ## Data
 The benchmarks we used in the paper are available in the `data` folder. The data is in the format of JSON. They are borrowed from the following repositories:
