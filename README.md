@@ -1,7 +1,7 @@
 # SALAM: Study Assistant for Large Language Models
 This is the repository for the paper: [*Learning from Mistakes via Interactive Study Assistant for Large Language Models* (SALAM)](https://browse.arxiv.org/pdf/2305.13829.pdf).
 
-This project is still on process. We will update the code and data soon.
+This project is still in process. We will update the code and data soon.
 
 ![SALAM](figs/framework.jpg)
 
