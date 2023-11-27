@@ -49,9 +49,8 @@ def get_options():
     return args
 
 
-# python run.py --mode preprocess --task_name bbq_sm --llm_model flan_t5 --save --save_root ../data 
-# python run.py --mode exam --task_name bbh --source correct --llm_model flan_t5 --save_root ../results/1126
-# python run.py --mode exam --task_name bbh --source correct --llm_model flan_t5 --sa_model checkpoints/bbh/ --save_root ../results/1126
+# python run.py --mode exam --task_name bbh --source correct --llm_model flan_t5 --save_root ../results
+# python run.py --mode exam --task_name bbh --source correct --llm_model flan_t5 --sa_model checkpoints/bbh/ --save_root ../results
 
 if __name__ == "__main__":
 

@@ -2,6 +2,14 @@ import re
 import os
 import json
 
+from sentence_transformers import SentenceTransformer, util
+import torch
+
+embedder = SentenceTransformer('all-MiniLM-L6-v2')
+
+from sentence_transformers.util import (semantic_search, 
+                                        dot_score, 
+                                        normalize_embeddings)
 
 def check_result(results, dataset, save_path=None):
     if save_path is not None:
@@ -93,15 +101,6 @@ def train_test_split(root_dir, data_root, task_name, model_name, mode):
         print(f"{name} | Train Acc: {train_acc[0]} | Test Acc: {test_acc[0]}" )    
     return status
 
-
-from sentence_transformers import SentenceTransformer, util
-import torch
-
-embedder = SentenceTransformer('all-MiniLM-L6-v2')
-
-from sentence_transformers.util import (semantic_search, 
-                                        dot_score, 
-                                        normalize_embeddings)
 
 def semantic_retrieval(query, corpus, top_k=1, index=None, device='cuda'):
     corpus_embeddings = embedder.encode(corpus, convert_to_tensor=True)

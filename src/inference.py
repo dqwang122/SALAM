@@ -67,7 +67,7 @@ def make_prompt(mode, ins):
 def get_options():
     args = argparse.ArgumentParser()
     # data options
-    args.add_argument("--mode", type=str, default='evaluate', choices=['test', 'interactive'])
+    args.add_argument("--mode", type=str, default='evaluate', choices=['evaluate', 'interactive'])
     args.add_argument("--input_file", type=str, default="data/bbh/flan_t5/mistake_collections.json")
     args.add_argument("--save_dir", type=str, default="results/")
     args.add_argument("--seed", type=int, default=42)
@@ -84,12 +84,12 @@ def get_options():
 
 
 # python src/inference.py --mode interactive --ckpt checkpoints/bbh_llama_0607/checkpoint-928/
-# python src/inference.py --mode test --input_file data/bbh/flan_t5/mistake_collections.json --ckpt checkpoints/bbh_llama_0607/checkpoint-928/
+# python src/inference.py --mode evaluate --input_file data/bbh/flan_t5/mistake_collections.json --ckpt checkpoints/bbh_llama_0607/checkpoint-928/
 
 if __name__ == "__main__":
     args = get_options()
 
-    if args.mode == 'test':
+    if args.mode == 'evaluate':
         data = json.load(open(args.input_file, 'r'))
         print(f"Load {len(data)} from {args.input_file}")
         prompts = []
