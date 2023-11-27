@@ -161,6 +161,9 @@ cython_debug/
 
 
 # User spedific files
-data/bbh/*
-data/bbq_sm/*
-results/*
+results/
+raw_results
+checkpoints/
+logs/
+reproduction/
+wandb/

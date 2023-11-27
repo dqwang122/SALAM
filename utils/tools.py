@@ -2,6 +2,11 @@ import re
 import os
 import json
 
+from sentence_transformers import SentenceTransformer
+from sentence_transformers.util import (semantic_search, 
+                                        dot_score, 
+                                        normalize_embeddings)
+embedder = SentenceTransformer('all-MiniLM-L6-v2')
 
 def check_result(results, dataset, save_path=None):
     if save_path is not None:
@@ -94,14 +99,8 @@ def train_test_split(root_dir, data_root, task_name, model_name, mode):
     return status
 
 
-from sentence_transformers import SentenceTransformer, util
-import torch
 
-embedder = SentenceTransformer('all-MiniLM-L6-v2')
 
-from sentence_transformers.util import (semantic_search, 
-                                        dot_score, 
-                                        normalize_embeddings)
 
 def semantic_retrieval(query, corpus, top_k=1, index=None, device='cuda'):
     corpus_embeddings = embedder.encode(corpus, convert_to_tensor=True)
@@ -114,3 +113,21 @@ def semantic_retrieval(query, corpus, top_k=1, index=None, device='cuda'):
     hits = semantic_search(query_embeddings, corpus_embeddings, score_function=dot_score, top_k=top_k)
     return hits
 
+
+def post_feedback(feedback):
+    pattern = r"choose the '.*' option."
+    for x in feedback:
+        if not isinstance(x, dict) or "guideline" not in x.keys():
+            print(x)
+            x = {'reason': x, 'guideline': ""}
+        if re.findall(pattern, x['guideline']):
+            print(re.findall(pattern, x['guideline']))
+        x['guideline'] = re.sub(pattern, "choose the option which doesn't make a decision.", x['guideline'])
+    return feedback
+
+def build_dataset(prompt, target):
+    dataset = []
+    for x, y in zip(prompt, target):
+        ins = {'input': x, 'target': y}
+        dataset.append(ins)
+    return dataset
